@@ -1,0 +1,21 @@
+CREATE DATABASE IF NOT EXISTS hotel_booking;
+USE hotel_booking;
+
+CREATE TABLE users (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  username VARCHAR(100) UNIQUE,
+  password VARCHAR(255)
+);
+
+CREATE TABLE rooms (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(100),
+  type VARCHAR(100)
+);
+
+CREATE TABLE bookings (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  room_id INT,
+  booked_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY(room_id) REFERENCES rooms(id)
+);
